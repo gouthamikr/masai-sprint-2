@@ -1,1 +1,2 @@
-# masai-sprint-2
+# Hangman
+
