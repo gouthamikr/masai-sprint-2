@@ -25,13 +25,56 @@ function randomWord() {
 }
 
 function generatingButtons() {
-
+    var buttonsHTML = 'abcdefghijklmnopqrstuvwxyz'.split('').map(letter =>
+        `
+          <button
+            class="btn btn-lg btn-primary m-2"
+            id='` + letter + `'
+            onClick="handleGuess('` + letter + `')"
+          >
+            ` + letter + `
+          </button>
+        `).join('');
+    
+    document.getElementById('keyboard').innerHTML = buttonsHTML;
 }
 
 function checkingIfGameWon() {
     if (wordStatus === answer) {
       document.getElementById('keyboard').innerHTML = 'You Won!!!';
     }
+}
+
+function handleGuess(chosenLetter) {
+    if(guessed.indexOf(chosenLetter) === -1) {
+        guessed.push(chosenLetter);
+    }
+    else{
+        null;
+    }
+
+    document.getElementById(chosenLetter).setAttribute('disabled', true);
+  
+    if (answer.indexOf(chosenLetter) >= 0) {
+      guessedWord();
+      checkingIfGameWon();
+    }
+    else if (answer.indexOf(chosenLetter) === -1) {
+      mistakes++;
+      updatingMistakes();
+      checkingIfGameLost();
+      updateHangmanPicture();
+    }
+}
+
+function guessedWord() {
+    wordStatus = answer.split('').map( letter => ( guessed.indexOf(letter) >= 0 ? letter : " __ " ) ).join('');
+  
+    document.getElementById('wordSpotlight').innerHTML = wordStatus;
+}
+
+function updatingMistakes() {
+    document.getElementById('mistakes').innerHTML = mistakes;
 }
 
 function checkingIfGameLost() {
@@ -41,6 +84,12 @@ function checkingIfGameLost() {
     }
 }
 
-function updateMistakes() {
-    document.getElementById('mistakes').innerHTML = mistakes;
+function updateHangmanPicture() {
+    document.getElementById('hangmanPic').src = './resources/' + mistakes + '.jpg';
 }
+
+document.getElementById('maxWrong').innerHTML = maxWrong;
+
+randomWord();
+generatingButtons();
+guessedWord();
