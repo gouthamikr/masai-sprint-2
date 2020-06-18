@@ -88,6 +88,17 @@ function updateHangmanPicture() {
     document.getElementById('hangmanPic').src = './resources/' + mistakes + '.jpg';
 }
 
+function reset() {
+    mistakes = 0;
+    guessed = [];
+    document.getElementById('hangmanPic').src = './resources/0.jpg';
+  
+    randomWord();
+    guessedWord();
+    updatingMistakes();
+    generatingButtons();
+}
+
 document.getElementById('maxWrong').innerHTML = maxWrong;
 
 randomWord();
