@@ -53,7 +53,7 @@ function handleGuess(chosenLetter) {
         null;
     }
 
-    document.getElementById(chosenLetter).setAttribute('disabled', true);
+    document.getElementById(chosenLetter)
   
     if (answer.indexOf(chosenLetter) >= 0) {
       guessedWord();
