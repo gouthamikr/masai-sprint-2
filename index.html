@@ -8,16 +8,17 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="text-center">Hangman</h1>
+        <h1 class="text-center" id="h1">Hangman</h1>
+        <button onclick="howToPlay()" class="btn-how">How To Play</button>
         <div class="float-right">Wrong Guesses: <span id='mistakes'>0</span> of <span id='maxWrong'></span></div>
         <div class="text-center">
-          <img id='hangmanPic' src="./resources/0.jpg" alt="image">
+          <img id="hangmanPic" src="./resources/0.jpg" alt="image">
           <p>Guess the Programming Language:</p>
           <p id="wordSpotlight">The word to be guessed goes here</p>
-          <div id="keyboard"></div>
+          <div id="keyboard"></div><br/>
           <button class="btn btn-info" onClick="reset()">Reset</button>
         </div> 
-      </div>
+    </div>
     <script src="script.js"></script>    
 </body>
 </html>
