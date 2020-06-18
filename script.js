@@ -24,6 +24,10 @@ function randomWord() {
     answer = programming_languages[Math.floor(Math.random() * programming_languages.length)];
 }
 
+function howToPlay(){
+    alert("Try to guess one secret word one letter at a time! If you guess an incorrect letter,your man will getting ready to hang To win, spell the word before you run out of guesses because you have only 6 guesses!")
+}
+
 function generatingButtons() {
     var buttonsHTML = 'abcdefghijklmnopqrstuvwxyz'.split('').map(letter =>
         `
@@ -41,7 +45,7 @@ function generatingButtons() {
 
 function checkingIfGameWon() {
     if (wordStatus === answer) {
-      document.getElementById('keyboard').innerHTML = 'You Won!!!';
+      document.getElementById('keyboard').innerHTML = 'You Won!!! Man Saved!!!';
     }
 }
 
@@ -69,7 +73,6 @@ function handleGuess(chosenLetter) {
 
 function guessedWord() {
     wordStatus = answer.split('').map( letter => ( guessed.indexOf(letter) >= 0 ? letter : " __ " ) ).join('');
-  
     document.getElementById('wordSpotlight').innerHTML = wordStatus;
 }
 
@@ -80,7 +83,7 @@ function updatingMistakes() {
 function checkingIfGameLost() {
     if (mistakes === maxWrong) {
       document.getElementById('wordSpotlight').innerHTML = 'The answer was: ' + answer;
-      document.getElementById('keyboard').innerHTML = 'You Lost!!!';
+      document.getElementById('keyboard').innerHTML = 'You Lost!!! Man Hanged!!';
     }
 }
 
